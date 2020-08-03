@@ -1,0 +1,22 @@
+.weatherCard {
+    border: 1px solid #ccc;
+    width: 15%;
+    text-align: center;
+    border-radius: 10px;
+    margin: 5px 10px;
+    background-color: #fff;
+    opacity: 90%;
+}
+
+.weatherCard img {
+    padding-top: 10px;
+    width: 80%;
+}
+
+.highTemp {
+    color: rgb(218, 141, 0);
+}
+
+.lowTemp {
+    color: rgb(64, 133, 224);
+}

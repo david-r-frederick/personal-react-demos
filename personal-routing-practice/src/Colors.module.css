@@ -1,0 +1,25 @@
+.red {
+    color: red;
+    background-color: rgb(255, 188, 188);
+}
+
+.blue {
+    color: blue;
+    background-color: rgb(188, 217, 255);
+}
+
+.green {
+    color: green;
+    background-color: rgb(188, 255, 188);
+}
+
+.purple {
+    color: purple;
+    background-color: rgb(223, 188, 255);
+}
+
+.color {
+    margin-left: 20px;
+    height: 600px;
+    text-align: center;
+}
