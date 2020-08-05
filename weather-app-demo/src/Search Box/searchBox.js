@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import classes from './cityBox.module.css';
+import classes from './searchBox.module.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-class cityBox extends Component {
+class searchBox extends Component {
     state = {
         searchString: null,
         currentLocation: null,
@@ -20,7 +20,6 @@ class cityBox extends Component {
                 `https://api.opencagedata.com/geocode/v1/json?q=${event.target.value}&key=d53b66b417bc4f72b999d35d1fbf4b98`
             )
             .then((response) => {
-                console.log(response);
                 this.setState({
                     currentLocation: response.data.results[0].formatted,
                 });
@@ -29,7 +28,6 @@ class cityBox extends Component {
                         `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.results[0].geometry.lat}&lon=${response.data.results[0].geometry.lng}&units=imperial&appid=da9156d2392f013a7e000b4e71847f75`
                     )
                     .then((response) => {
-                        console.log(response);
                         this.props.onFetchWeatherData(response.data);
                         this.setState({
                             currentCityTemp: response.data.current.temp,
@@ -80,4 +78,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(cityBox);
+export default connect(null, mapDispatchToProps)(searchBox);

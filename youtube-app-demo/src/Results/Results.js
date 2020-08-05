@@ -5,7 +5,7 @@ class results extends Component {
     render() {
         return (
             <div
-                className={classes.resultsContainer}
+                className={this.props.resultVideoTitles !== null ? classes.resultsContainer : classes.noResults}
             >
                 {this.props.resultVideoTitles ? (
                     this.props.resultVideoTitles.map((title, index) => {
@@ -16,7 +16,7 @@ class results extends Component {
                                 onClick={() => this.props.setVidId(index)
                                 }
                             >
-                                {title}
+                                {title.replace(/&#39;/g, "'")}
                             </button>
                         );
                     })

@@ -1,13 +1,23 @@
 .resultsContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    width: 35%;
-    height: 350px;
+    justify-content: flex-start;
+    width: 50%;
+    height: 460px;
+}
+
+.noResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 460px;
 }
 
 .resultsContainer button {
     margin-left: 17px;
+    margin-bottom: 14px;
     background-color: rgb(235, 235, 235);
     border-color: rgb(255, 28, 28);
     color: black;
@@ -19,8 +29,4 @@
 .resultsContainer button:focus {
     text-decoration: none;
     outline: none;
-}
-
-.resultsContainer p {
-    align-self: center;
 }

@@ -10,8 +10,6 @@ for(let i = 0; i < 7; i++){
   hours.push(currentDate.getHours() + i + ':00');
 }
 
-console.log(hours);
-
 class hourly extends Component {
     render() {
         return (

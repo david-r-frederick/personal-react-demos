@@ -1,10 +1,9 @@
-import mostlySunnyImg from '../../img/partlysunny.png';
-import rainyImg from '../../img/rainy.png';
-import snowyImg from '../../img/snowy.png';
-import stormyImg from '../../img/stormy.png';
-import sunnyImg from '../../img/sunny.png';
-import cloudyImg from '../../img/cloudy.png';
-import questionMarkImg from '../../img/questionMark.png';
+import rainyImg from '../../assets/rainy.png';
+import snowyImg from '../../assets/snowy.png';
+import stormyImg from '../../assets/stormy.png';
+import sunnyImg from '../../assets/sunny.png';
+import cloudyImg from '../../assets/cloudy.png';
+import questionMarkImg from '../../assets/questionMark.png';
 
 const images = Array(7).fill(questionMarkImg);
 
@@ -13,7 +12,8 @@ const imagesObj = {
   'Clouds': cloudyImg,
   'Rain': rainyImg,
   'Snow': snowyImg,
-  'Storm': stormyImg
+  'Storm': stormyImg,
+  'Haze': cloudyImg
 }
 
 const initialState = {
@@ -28,7 +28,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if(action.type === 'FETCH_WEATHER'){
+    if(action.type === 'FETCH_WEATHER'){
     return {
       ...state,
       highTemps: action.resData.daily.map(el => {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import YouTube from 'react-youtube';
 import Header from './Header/Header';
 import Results from './Results/Results';
-import Comments from './Comments/Comments';
+import CommentInput from './Comments/CommentInput';
 
 class App extends Component {
     constructor(props) {
@@ -14,13 +14,14 @@ class App extends Component {
             resultVideoTitles: null,
             resultVideoIds: null,
             searchString: null,
+            comments: [],
         };
     }
 
     searchHandler() {
         axios
             .get(
-                `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyDeMhcfA8lM8PGnMAkPl2n76hog-lAzgxc&type=video&q=${this.state.searchString}`
+                `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyC3MyXW8saacX0g22HEwGFkLuju69XxGws&type=video&q=${this.state.searchString}`
             )
             .then((response) => {
                 this.setState({
@@ -37,40 +38,60 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Header
-                    changed={(text) => {
-                        this.setState({
-                            searchString: text,
-                        });
-                    }}
-                    pressed={(key) => {
-                        if (key === 'Enter') {
-                            this.searchHandler();
-                        }
-                    }}
-                    search={() => this.searchHandler()}
-                />
-
-                <div className="App">
-                    <YouTube
-                        videoId={this.state.videoId ? this.state.videoId : null}
-                        opts={{
-                            playerVars: {
-                                autoplay: 1,
-                            },
-                        }}
-                    />
-                    <Results
-                        resultVideoTitles={this.state.resultVideoTitles}
-                        setVidId={(index) => {
+            <div className="App">
+                <div>
+                    <Header
+                        changed={(text) => {
                             this.setState({
-                                videoId: this.state.resultVideoIds[index],
+                                searchString: text,
                             });
                         }}
+                        pressed={(key) => {
+                            if (key === 'Enter') {
+                                this.searchHandler();
+                            }
+                        }}
+                        search={() => this.searchHandler()}
                     />
                 </div>
-                <Comments />
+                <div style={{
+                    width: '80%'
+                }}>
+                    <div className="videoSection">
+                        <YouTube
+                            videoId={this.state.videoId ? this.state.videoId : null}
+                            opts={{
+                                width: 740,
+                                height: 460,
+                                playerVars: {
+                                    autoplay: 1
+                                },
+                            }}
+                        />
+                        <Results
+                            resultVideoTitles={this.state.resultVideoTitles}
+                            setVidId={(index) => {
+                                this.setState({
+                                    videoId: this.state.resultVideoIds[index],
+                                });
+                            }}
+                        />
+                    </div>
+                    <div className="commentSection">
+                        <CommentInput
+                            addComment={(text) => {
+                                this.setState((prevState) => {
+                                    return {
+                                        comments: prevState.comments.concat(text),
+                                    };
+                                });
+                            }}
+                        />
+                        {this.state.comments.map((el) => {
+                            return <p className="comment">{el}</p>;
+                        })}
+                    </div>
+                </div>
             </div>
         );
     }

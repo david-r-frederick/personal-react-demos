@@ -3,7 +3,7 @@ import './App.css';
 import SevenDay from './Seven Day Forecast/sevenDay';
 import SideMenu from './Side Menu/SideMenu';
 import { BrowserRouter, Route } from 'react-router-dom';
-import CityBox from './City Box/cityBox';
+import SearchBox from './Search Box/searchBox';
 import Hourly from './Hourly Forecast/HourlyForecast';
 import CurrentWeather from './Current Weather/CurrentWeather';
 import './App.css';
@@ -18,7 +18,7 @@ function App() {
                 marginTop: '20px'
             }}>
                 <SideMenu />
-                <CityBox city={'Houston'} />
+                <SearchBox city={'Houston'} />
             </div>
             <Route path="/sevenDay" component={SevenDay} />
             <Route path="/hourly" component={Hourly} />
