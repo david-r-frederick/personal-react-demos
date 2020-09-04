@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import WeatherCard from '../Weather Card/weatherCard';
+import WeatherCard from '../../components/Weather Card/weatherCard';
 import classes from './sevenDay.module.css';
-import Banner from '../Banner/banner';
+import Banner from '../../components/Banner/banner';
 import { connect } from 'react-redux';
 
 const today = new Date().toLocaleDateString('en-US', {

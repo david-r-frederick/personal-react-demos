@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import classes from './searchBox.module.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import Spinner from '../Spinner';
+import Spinner from '../../Spinner';
 
 class searchBox extends Component {
     state = {
@@ -30,6 +30,7 @@ class searchBox extends Component {
                         `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.results[0].geometry.lat}&lon=${response.data.results[0].geometry.lng}&units=imperial&appid=da9156d2392f013a7e000b4e71847f75`
                     )
                     .then((response) => {
+                        console.log(response);
                         this.props.onFetchWeatherData(response.data);
                         this.setState({
                             currentCityTemp: response.data.current.temp,
@@ -53,7 +54,7 @@ class searchBox extends Component {
                 ) : (
                     <Fragment>
                         <div className={classes.city}>
-                            <h2>
+                            <h2 className={classes.currentLocationText}>
                                 Current Location: {this.state.currentLocation}
                             </h2>
                         </div>

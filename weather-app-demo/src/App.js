@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import SevenDay from './Seven Day Forecast/sevenDay';
-import SideMenu from './Side Menu/SideMenu';
+import SevenDay from './containers/Seven Day Forecast/sevenDay';
+import SideMenu from './components/Side Menu/SideMenu';
 import { BrowserRouter, Route } from 'react-router-dom';
-import SearchBox from './Search Box/searchBox';
-import Hourly from './Hourly Forecast/HourlyForecast';
-import CurrentWeather from './Current Weather/CurrentWeather';
+import SearchBox from './components/Search Box/searchBox';
+import Hourly from './containers/Hourly Forecast/HourlyForecast';
+import CurrentWeather from './containers/Current Weather/CurrentWeather';
 import './App.css';
 
 function App() {

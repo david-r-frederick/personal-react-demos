@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Banner from '../Banner/banner';
-import WeatherCard from '../Weather Card/weatherCard';
+import Banner from '../../components/Banner/banner';
+import WeatherCard from '../../components/Weather Card/weatherCard';
 import classes from './HourlyForecast.module.css';
 import { connect } from 'react-redux';
 

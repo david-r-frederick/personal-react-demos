@@ -1,0 +1,12 @@
+.hourlyRow {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 730px){
+    .hourlyRow {
+        flex-flow: column;
+        align-items: center;
+    }
+}

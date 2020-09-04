@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import Banner from '../Banner/banner';
+import React, { Component} from 'react';
+import Banner from '../../components/Banner/banner';
 import { connect } from 'react-redux';
 import classes from './CurrentWeather.module.css';
-import BackgroundBox from '../BackgroundBox/BackgroundBox'
+import BackgroundBox from '../../components/BackgroundBox/BackgroundBox';
 
 class currentWeather extends Component {
     render() {

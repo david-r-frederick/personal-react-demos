@@ -11,3 +11,9 @@
     height: 410px;
     opacity: 0.7;
 }
+
+@media (max-width: 730px) {
+    .box {
+        width: 225px;
+    }
+}

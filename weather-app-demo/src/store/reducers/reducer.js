@@ -13,7 +13,8 @@ const imagesObj = {
   'Rain': rainyImg,
   'Snow': snowyImg,
   'Storm': stormyImg,
-  'Haze': cloudyImg
+  'Haze': cloudyImg,
+  'Thunderstorm': stormyImg
 }
 
 const initialState = {
