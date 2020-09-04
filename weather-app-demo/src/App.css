@@ -6,3 +6,19 @@ header {
     height: 20px;
     background-color: rgb(46, 48, 209);
 }
+
+.utility {
+    display: flex;
+    height: 225px;
+    margin-top: 20px;
+}
+
+@media (max-width: 730px){
+    .utility {
+        flex-flow: column;
+        align-items: center;
+        min-height: 400px;
+        width: 70%;
+        margin-left: 15%;
+    }
+}

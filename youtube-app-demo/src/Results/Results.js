@@ -5,22 +5,35 @@ class results extends Component {
     render() {
         return (
             <div
-                className={this.props.resultVideoTitles !== null ? classes.resultsContainer : classes.noResults}
+                className={
+                    this.props.resultVideoTitles !== null
+                        ? classes.resultsContainer
+                        : classes.noResults
+                }
             >
-                {this.props.resultVideoTitles ? (
-                    this.props.resultVideoTitles.map((title, index) => {
+                {this.props.resultVideoImgURLs ? (
+                    this.props.resultVideoImgURLs.map((url, index) => {
                         return (
                             <button
-                                className={classes.resultBtn}
-                                key={title}
-                                onClick={() => this.props.setVidId(index)
-                                }
+                                key={url}
+                                onClick={() => this.props.setVidId(index)}
                             >
-                                {title.replace(/&#39;/g, "'")}
+                                <img
+                                    className={classes.image}
+                                    alt={url}
+                                    src={url}
+                                ></img>
+                                <p>
+                                    {this.props.resultVideoTitles[
+                                        index
+                                    ].replace(/&#39;/g, "'")}
+                                </p>
                             </button>
                         );
                     })
-                ) : <p>Results Will Display Here</p>}
+                ) : (
+                    <p>Results Will Display Here</p>
+                )}
             </div>
         );
     }

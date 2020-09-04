@@ -13,6 +13,7 @@ class App extends Component {
             videoId: null,
             resultVideoTitles: null,
             resultVideoIds: null,
+            resultVideoImageURLs: null,
             searchString: null,
             comments: [],
         };
@@ -21,9 +22,10 @@ class App extends Component {
     searchHandler() {
         axios
             .get(
-                `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyC3MyXW8saacX0g22HEwGFkLuju69XxGws&type=video&q=${this.state.searchString}`
+                `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyC3MyXW8saacX0g22HEwGFkLuju69XxGws&type=video&q=${this.state.searchString}&maxResults=10`
             )
             .then((response) => {
+                console.log(response);
                 this.setState({
                     resultVideoTitles: response.data.items.map((el) => {
                         return el.snippet.title;
@@ -31,6 +33,9 @@ class App extends Component {
                     resultVideoIds: response.data.items.map((el) => {
                         return el.id.videoId;
                     }),
+                    resultVideoImageURLs: response.data.items.map(el => {
+                        return el.snippet.thumbnails.high.url
+                    })
                 });
             })
             .catch((err) => alert(err));
@@ -69,6 +74,7 @@ class App extends Component {
                             }}
                         />
                         <Results
+                            resultVideoImgURLs={this.state.resultVideoImageURLs}
                             resultVideoTitles={this.state.resultVideoTitles}
                             setVidId={(index) => {
                                 this.setState({

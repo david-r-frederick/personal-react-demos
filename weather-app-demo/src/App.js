@@ -12,11 +12,7 @@ function App() {
     return (
         <BrowserRouter>
             <header>Welcome to my Demo Weather Page</header>
-            <div style={{
-                display: 'flex',
-                height: '200px',
-                marginTop: '20px'
-            }}>
+            <div className="utility">
                 <SideMenu />
                 <SearchBox city={'Houston'} />
             </div>

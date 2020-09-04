@@ -8,6 +8,11 @@
     opacity: 0.9;
 }
 
+.date {
+    font-size: small;
+    padding: 10px;
+}
+
 .weatherCard img {
     padding-top: 10px;
     width: 80%;
@@ -19,4 +24,15 @@
 
 .lowTemp {
     color: rgb(64, 133, 224);
+}
+
+@media (max-width: 730px){
+    .weatherCard {
+        width: 70%;
+        align-self: center;
+    }
+
+    .weatherCard img {
+        width: 50%
+    }
 }

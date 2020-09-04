@@ -9,7 +9,7 @@ const weatherCard = (props) => {
             <p className={classes.lowTemp}>{props.lowTemp}</p>
             <p>{props.hourTemp}</p>
             <p>{props.weatherDescription}</p>
-            <p>{props.date}</p>
+            <p className={classes.date}>{props.date}</p>
         </div>
     );
 };

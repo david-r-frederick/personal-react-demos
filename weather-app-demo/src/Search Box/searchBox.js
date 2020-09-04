@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classes from './searchBox.module.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import Spinner from '../Spinner';
 
 class searchBox extends Component {
     state = {
         searchString: null,
         currentLocation: null,
         currentCityTemp: null,
+        loading: false,
     };
 
     inputChangeHandler = (event) => {
@@ -31,6 +33,7 @@ class searchBox extends Component {
                         this.props.onFetchWeatherData(response.data);
                         this.setState({
                             currentCityTemp: response.data.current.temp,
+                            loading: false,
                         });
                     })
                     .catch((err) => {
@@ -45,22 +48,31 @@ class searchBox extends Component {
     render() {
         return (
             <div className={classes.header}>
-                <div className={classes.city}>
-                    <h2>Current Location: {this.state.currentLocation}</h2>
-                </div>
-                <div className={classes.searchBox}>
-                    <p>Search</p>
-                    <input
-                        onChange={(e) => this.inputChangeHandler(e)}
-                        onKeyDown={(ev) => {
-                            if (ev.key === 'Enter') {
-                                this.newCityChangeHandler(ev);
-                            }
-                        }}
-                    ></input>
-                </div>
+                {this.state.loading ? (
+                    <Spinner />
+                ) : (
+                    <Fragment>
+                        <div className={classes.city}>
+                            <h2>
+                                Current Location: {this.state.currentLocation}
+                            </h2>
+                        </div>
+                        <div className={classes.searchBox}>
+                            <p>Search</p>
+                            <input
+                                onChange={(e) => this.inputChangeHandler(e)}
+                                onKeyDown={(ev) => {
+                                    if (ev.key === 'Enter') {
+                                        this.setState({ loading: true });
+                                        this.newCityChangeHandler(ev);
+                                    }
+                                }}
+                            ></input>
+                        </div>
+                    </Fragment>
+                )}
                 <p>
-                    {this.state.currentCityTemp
+                    {this.state.currentCityTemp && !this.state.loading
                         ? `Current Temperature: ${this.state.currentCityTemp.toFixed(
                               0
                           )}°`

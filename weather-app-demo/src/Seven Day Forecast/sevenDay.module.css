@@ -3,3 +3,10 @@
     justify-content: center;
     margin-top: 20px;
 }
+
+@media (max-width: 730px){
+    .weatherRow {
+        flex-flow: column;
+        align-items: center;
+    }
+}

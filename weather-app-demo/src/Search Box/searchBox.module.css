@@ -1,10 +1,12 @@
 .header {
     display: flex;
+    box-sizing: border-box;
+    padding: 10px;
     flex-direction: column;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-left: 20px;
-    height: inherit;
+    height: 100%;
     width: 82%;
     margin-right: 10px;
 }
@@ -32,4 +34,17 @@
 
 .city {
     padding-left: 20px;
+}
+
+@media (max-width: 730px){
+    .header {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 435px){
+    .header {
+        height: 100%;
+    }
 }

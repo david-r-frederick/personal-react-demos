@@ -6,9 +6,20 @@ import { connect } from 'react-redux';
 
 const hours = [];
 const currentDate = new Date();
-for(let i = 0; i < 7; i++){
-  hours.push(currentDate.getHours() + i + ':00');
+for (let i = 0; i < 7; i++) {
+    let currentHour = currentDate.getHours() + i;
+    if (currentHour > 24){
+        currentHour -= 24 + ':00 am';
+    } else if (currentHour > 12){
+        currentHour = currentHour - 12 + ':00 pm';
+    } else if (currentHour === 12){
+        currentHour += ':00 pm';
+    } else {
+        currentHour += ':00 am';
+    }
+    hours.push(currentHour);
 }
+
 
 class hourly extends Component {
     render() {
@@ -21,9 +32,15 @@ class hourly extends Component {
                         .map((el, index) => {
                             return (
                                 <WeatherCard
-                                    img={this.props.hourImages[index]} 
-                                    hourTemp={this.props.hourTemps[index] !== '' ? `${this.props.hourTemps[index]}°` : ''}
-                                    weatherDescription={this.props.weatherDescriptions[index]}
+                                    img={this.props.hourImages[index]}
+                                    hourTemp={
+                                        this.props.hourTemps[index] !== ''
+                                            ? `${this.props.hourTemps[index]}°`
+                                            : ''
+                                    }
+                                    weatherDescription={
+                                        this.props.weatherDescriptions[index]
+                                    }
                                     key={index}
                                     date={hours[index]}
                                 />
@@ -35,14 +52,14 @@ class hourly extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         hourImages: state.hourImages,
         highTemps: state.highTemps,
         lowTemps: state.lowTemps,
         hourTemps: state.hourTemps,
-        weatherDescriptions: state.weatherDescs
-    }
-}
+        weatherDescriptions: state.weatherDescs,
+    };
+};
 
 export default connect(mapStateToProps)(hourly);

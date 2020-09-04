@@ -6,13 +6,13 @@ const sideMenu = (props) => {
     return (
         <ul className={classes.menu}>
             <li>
-                <NavLink style={{textDecoration: 'none'}} to="/current">Current Weather</NavLink>
+                <NavLink className={classes.menuItem} to="/current">Current Weather</NavLink>
             </li>
             <li>
-                <NavLink style={{textDecoration: 'none'}} to="/hourly">Hourly Forecast</NavLink>
+                <NavLink className={classes.menuItem} to="/hourly">Hourly Forecast</NavLink>
             </li>
             <li>
-                <NavLink style={{textDecoration: 'none'}} to="/sevenDay">Seven Day Forecast</NavLink>
+                <NavLink className={classes.menuItem} to="/sevenDay">Seven Day Forecast</NavLink>
             </li>
         </ul>
     );

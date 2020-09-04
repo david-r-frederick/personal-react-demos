@@ -17,6 +17,7 @@ header {
 }
 
 .searchBtn {
+    width: 90px;
     margin-left: 17px;
     background-color: red;
     border-color: red;
